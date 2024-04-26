@@ -1,0 +1,26 @@
+<app-head-nav></app-head-nav>
+
+<div class="container mt-5">
+  <h1 class="text-center">
+    !Esto es lo que quieres saber sobre tu proximo destino¡
+  </h1>
+
+  <div class="container mt-5">
+    <h5 class="text-center">
+      La temperatura en tu destino ({{ city }}) es de {{ temperature }} grados
+      Centigrados
+    </h5>
+  </div>
+  <div class="container mt5">
+    <h6 class="text-center">Moneda Local {{ moneda }}</h6>
+    <h6 class="text-center">
+      Tu dinero en pesos Colombianos es
+      {{ copAmount | currency : "USD" : "symbol" : "1.0-0" }}
+    </h6>
+    <h6 class="text-center">
+      El dínero que tendrias disponible en la moneda extrangera ({{ moneda }})
+      es:
+      {{ travelAmount }}
+    </h6>
+  </div>
+</div>

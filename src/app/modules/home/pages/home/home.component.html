@@ -1,0 +1,72 @@
+<app-head-nav></app-head-nav>
+
+<h1 class="text-center">Turismo App</h1>
+
+<div class="container mt-4">
+  <form (ngSubmit)="searchInfoTravel()" [formGroup]="formHome">
+    <div class="form-group">
+      <label for="sltCountry" class="form-label"
+        >Selecciona un páis destino para tu viaje</label
+      >
+      <select
+        formControlName="country"
+        name="sltCountry"
+        id="sltCountry"
+        class="form-control"
+        (change)="searchCitiesForCountry()"
+      >
+        <option value="" selected disabled>
+          Selecciona un país al que quieras viajar
+        </option>
+        <option value="1">Inglaterra</option>
+        <option value="2">Japon</option>
+        <option value="3">India</option>
+        <option value="4">Dinamarca</option>
+      </select>
+    </div>
+
+    <div *ngIf="countryIsSelected">
+      <div class="form-group mt-3">
+        <label for="sltCity" class="form-label"
+          >Selecciona una ciudad para tu viaje</label
+        >
+        <select
+          name="sltCity"
+          id="sltCity"
+          class="form-control"
+          formControlName="city"
+        >
+          <option value="" selected disabled>
+            Selecciona la ciudad a la que quieras viajar
+          </option>
+          <option value="{{ city.id }}" *ngFor="let city of cities">
+            {{ city.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group mt-4">
+        <label for="presupuesto" class="form-label"
+          >Ingresa el presupuesto para este viaje en pesos colombianos
+          COP</label
+        >
+        <input
+          type="text"
+          name="presupuesto"
+          id="presupuesto"
+          class="form-control"
+          [(ngModel)]="montoTotal"
+          [ngModelOptions]="{
+            standalone: true
+          }"
+        />
+      </div>
+
+      <div class="form-group mt-3">
+        <button class="btn btn-primary text-center" type="submit">
+          Consultar información sobre el viaje
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
